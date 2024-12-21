@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 const useActivities = () => {
-  const [activities, setActivities] = useState([]);
   const [active, setActive] = useState([]);
   const [archive, setArchive] = useState([]);
   const [callDetails, setCallDetails] = useState(null);
