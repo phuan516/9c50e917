@@ -12,15 +12,11 @@
 }
 
 .archive-all:hover {
-  background-color: #d0fecf;
+  background-color: #e0e0e0;
 }
 
 .archive-all-icon {
   margin: 0 10px;
-}
-
-.archive-all:hover {
-  color: #00623b;
 }
 
 .archive-label {
@@ -30,5 +26,57 @@
 ul {
   list-style-type: none;
   padding: 0;
+  max-height: 400px;
   overflow-y: scroll;
+}
+
+li {
+  width: 100%;
+  display: flex;
+}
+
+li button {
+  background-color: white;
+  border: 0;
+}
+
+.archive {
+  padding: 2px 15px;
+  border-radius: 8px;
+  transition: background-color 0.5s ease;
+}
+
+.archive:hover {
+  background-color: #e0e0e0;
+}
+
+.call-icon {
+  margin-right: 10px;
+}
+
+.call {
+  flex: 1 1 auto;
+  display: flex;
+  border-radius: 8px;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  transition: background-color 0.5s ease;
+}
+
+.call div {
+  display: flex;
+  align-items: center;
+}
+
+.call:hover {
+  background-color: #e0e0e0;
+}
+
+.missed {
+  color: #ff3c5d;
+}
+
+.answered {
+  color: #00c751;
 }
