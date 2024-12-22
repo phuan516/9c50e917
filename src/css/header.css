@@ -1,6 +1,6 @@
 header {
-  margin: 0px 10px;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid;
+  border-color: rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -12,6 +12,7 @@ header h1 {
   display: flex;
   align-items: center;
   cursor: pointer;
+  color: #25d366;
 }
 
 header .icons {
@@ -29,6 +30,7 @@ header .icons {
   align-items: center;
   border-radius: 50%;
   cursor: pointer;
+  color: black;
   transition: background-color 0.5s ease;
 }
 

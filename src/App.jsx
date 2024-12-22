@@ -103,10 +103,10 @@ const App = () => {
         <div
           className="nav-item"
           onClick={() => {
-            setCurrentTab("Recent");
+            setCurrentTab("recent");
           }}
         >
-          <span className="nav-icon">
+          <span className={`nav-icon ${currentTab === "recent" && "selected"}`}>
             <FaRegClock />
           </span>
           <span className="nav-label">Recent</span>
@@ -114,10 +114,12 @@ const App = () => {
         <div
           className="nav-item"
           onClick={() => {
-            setCurrentTab("Recent");
+            setCurrentTab("archive");
           }}
         >
-          <span className="nav-icon">
+          <span
+            className={`nav-icon ${currentTab === "archive" && "selected"}`}
+          >
             <FaArchive />
           </span>
           <span className="nav-label">Archive</span>
