@@ -1,14 +1,20 @@
 import React from "react";
 import { useState } from "react";
-import { FaArchive, FaStar, FaRegClock } from "react-icons/fa";
+import { FaStar, FaRegClock } from "react-icons/fa";
 import { MdOutlineContacts } from "react-icons/md";
+import {
+  BiSolidArchive,
+  BiSolidArchiveIn,
+  BiSolidArchiveOut,
+} from "react-icons/bi";
 
 import Header from "./components/Header.jsx";
 import useActivities from "./hooks/useActivities.js";
 import "./css/nav.css";
+import "./css/activity.css";
 
 const App = () => {
-  const [currentTab, setCurrentTab] = useState("recent");
+  const [currentTab, setCurrentTab] = useState("Activity");
 
   const { active, archive, callDetails, fetchCallDetails, setIsArchived } =
     useActivities();
@@ -17,18 +23,22 @@ const App = () => {
     <div className="container">
       <Header />
       <div className="container-view">
-        {currentTab === "recent" && (
+        {currentTab === "Activity" && (
           <>
             <button
+              className="archive-all"
               onClick={() => {
                 active.forEach((activity) => {
                   setIsArchived(activity.id, true);
                 });
               }}
             >
-              archive all
+              <span className="archive-all-icon">
+                <BiSolidArchiveIn size={20} />
+              </span>
+              <span className="archive-label">Archive all calls</span>
             </button>
-            <h2>Recent</h2>
+            <h3>Activity</h3>
             <ul>
               {active.map((activity, index) => (
                 <li key={index}>
@@ -54,15 +64,19 @@ const App = () => {
         {currentTab === "archive" && (
           <>
             <button
+              className="archive-all"
               onClick={() => {
                 archive.forEach((activity) => {
                   setIsArchived(activity.id, false);
                 });
               }}
             >
-              unarchive all
+              <span className="archive-all-icon">
+                <BiSolidArchiveOut size={20} />
+              </span>
+              <span className="archive-label">Unarchive all calls</span>
             </button>
-            <h2>Archived</h2>
+            <h3>Archived</h3>
             <ul>
               {archive.map((activity, index) => (
                 <li key={index}>
@@ -103,13 +117,15 @@ const App = () => {
         <div
           className="nav-item"
           onClick={() => {
-            setCurrentTab("recent");
+            setCurrentTab("Activity");
           }}
         >
-          <span className={`nav-icon ${currentTab === "recent" && "selected"}`}>
+          <span
+            className={`nav-icon ${currentTab === "Activity" && "selected"}`}
+          >
             <FaRegClock />
           </span>
-          <span className="nav-label">Recent</span>
+          <span className="nav-label">Activity</span>
         </div>
         <div
           className="nav-item"
@@ -120,7 +136,7 @@ const App = () => {
           <span
             className={`nav-icon ${currentTab === "archive" && "selected"}`}
           >
-            <FaArchive />
+            <BiSolidArchive />
           </span>
           <span className="nav-label">Archive</span>
         </div>
