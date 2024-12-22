@@ -9,6 +9,9 @@ header {
 header h1 {
   margin: 0;
   padding: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 header .icons {
@@ -17,10 +20,19 @@ header .icons {
   align-items: center;
 }
 
-header .search {
-  margin-right: 20px;
+.search-icon,
+.menu-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
 }
 
-header .menu {
-  margin-right: 10px;
+.search-icon:hover,
+.menu-icon:hover {
+  background-color: #e0e0e0;
 }
