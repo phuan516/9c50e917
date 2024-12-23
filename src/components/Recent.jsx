@@ -1,9 +1,9 @@
 import React from "react";
+import { BiSolidArchiveIn } from "react-icons/bi";
 import { FiPhoneIncoming, FiPhoneOutgoing } from "react-icons/fi";
-import { BiSolidArchiveOut } from "react-icons/bi";
 
-const Archive = ({
-  archive,
+const Recent = ({
+  active,
   setIsArchived,
   fetchCallDetails,
   setIsDetailOpen,
@@ -23,19 +23,19 @@ const Archive = ({
       <button
         className="archive-all"
         onClick={() => {
-          archive.forEach((activity) => {
-            setIsArchived(activity.id, false);
+          active.forEach((activity) => {
+            setIsArchived(activity.id, true);
           });
         }}
       >
         <span className="archive-all-icon">
-          <BiSolidArchiveOut size={20} />
+          <BiSolidArchiveIn size={20} />
         </span>
-        <span className="archive-label">Unarchive all calls</span>
+        <span className="archive-label">Archive all calls</span>
       </button>
-      <h3>Archived</h3>
+      <h3>Activity</h3>
       <ul className="call-list">
-        {archive.map((activity, index) => (
+        {active.map((activity, index) => (
           <li key={index}>
             <button
               className="call"
@@ -74,7 +74,7 @@ const Archive = ({
                 setIsArchived(activity.id, !activity.is_archived);
               }}
             >
-              <BiSolidArchiveOut size={20} />
+              <BiSolidArchiveIn size={20} />
             </button>
           </li>
         ))}
@@ -83,4 +83,4 @@ const Archive = ({
   );
 };
 
-export default Archive;
+export default Recent;
