@@ -196,8 +196,45 @@ const App = () => {
             >
               <BiArrowBack size={20} />
             </button>
-            <h3>Call Details</h3>
-            {JSON.stringify(callDetails)}
+            <section>
+              <h3>Call Details</h3>
+              <p>
+                Direction: <span>{callDetails?.direction}</span>
+              </p>
+              <p>
+                From: <span>{callDetails?.from}</span>
+              </p>
+              <p>
+                To: <span>{callDetails?.to}</span>
+              </p>
+              <p>
+                Via: <span>{callDetails?.via}</span>
+              </p>
+            </section>
+            <section>
+              <h3>Call Status</h3>
+              <p>
+                Type: <span>{callDetails?.call_type}</span>
+              </p>
+              <p>
+                Duration: <span>{callDetails?.duration} seconds</span>
+              </p>
+              <p>
+                Archived: <span>{callDetails?.is_archived ? "Yes" : "No"}</span>
+              </p>
+            </section>
+            <section>
+              <h3>Metadata</h3>
+              <p>
+                Call ID: <span>{callDetails?.id}</span>
+              </p>
+              <p>
+                Created:{" "}
+                <span>
+                  {new Date(callDetails?.created_at).toLocaleString()}
+                </span>
+              </p>
+            </section>
           </div>
         </motion.div>
       </div>
