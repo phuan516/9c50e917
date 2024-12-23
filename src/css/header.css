@@ -15,10 +15,11 @@ header h1 {
   color: #25d366;
 }
 
-header .icons {
+.header-icons {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-right: 5px;
 }
 
 .search-icon,

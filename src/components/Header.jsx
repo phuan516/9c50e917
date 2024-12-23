@@ -7,12 +7,12 @@ const Header = () => {
   return (
     <header>
       <h1>aircall</h1>
-      <div className="icons">
+      <div className="header-icons">
         <div className="search-icon">
-          <FaSearch size={20} className="search" />
+          <FaSearch size={20} />
         </div>
         <div className="menu-icon">
-          <FaBars size={20} className="menu" />
+          <FaBars size={20} />
         </div>
       </div>
     </header>

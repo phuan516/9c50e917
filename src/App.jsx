@@ -8,7 +8,10 @@ import {
   BiSolidArchive,
   BiSolidArchiveIn,
   BiSolidArchiveOut,
+  BiArrowBack,
 } from "react-icons/bi";
+import { IoClose } from "react-icons/io5";
+import { motion } from "framer-motion";
 
 import Header from "./components/Header.jsx";
 import useActivities from "./hooks/useActivities.js";
@@ -17,6 +20,7 @@ import "./css/activity.css";
 
 const App = () => {
   const [currentTab, setCurrentTab] = useState("Activity");
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
 
   const { active, archive, callDetails, fetchCallDetails, setIsArchived } =
     useActivities();
@@ -58,6 +62,7 @@ const App = () => {
                     className="call"
                     onClick={() => {
                       fetchCallDetails(activity.id);
+                      setIsDetailOpen(true);
                     }}
                   >
                     {activity.direction === "inbound" && (
@@ -124,6 +129,7 @@ const App = () => {
                     className="call"
                     onClick={() => {
                       fetchCallDetails(activity.id);
+                      setIsDetailOpen(true);
                     }}
                   >
                     {activity.direction === "inbound" && (
@@ -167,13 +173,33 @@ const App = () => {
             </ul>
           </>
         )}
-
-        {currentTab === "details" && (
-          <>
-            <h2>Details</h2>
-            {callDetails && <div>{JSON.stringify(callDetails)}</div>}
-          </>
-        )}
+        <motion.div
+          initial={{ x: "100%" }}
+          animate={{ x: isDetailOpen ? 0 : "100%" }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+          style={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            width: "100%",
+            height: "100%",
+            background: "white",
+            zIndex: 1000,
+          }}
+        >
+          <div style={{ padding: "20px" }}>
+            <button
+              className="back-icon"
+              onClick={() => {
+                setIsDetailOpen(false);
+              }}
+            >
+              <BiArrowBack size={20} />
+            </button>
+            <h3>Call Details</h3>
+            {JSON.stringify(callDetails)}
+          </div>
+        </motion.div>
       </div>
       <div className="bottom-nav">
         <div className="nav-item">
